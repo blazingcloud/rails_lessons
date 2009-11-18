@@ -3,8 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Person do
   it 'should remember first and last name' do
     p = Person.new(:first_name => "Eve", :last_name => "Smith")
-    p.first.should == "Eve"
-    p.last.should == "Smith"
+    p.first_name.should == "Eve"
+    p.last_name.should == "Smith"
   end
   
   it 'should construct a full name' do
@@ -12,7 +12,7 @@ describe Person do
     p.full_name.should == "Eve Smith"
   end
   
-  it 'should save a valid record with first and last name' do
+  it 'should save a valid record with first_name and last name' do
     p = Person.new(:first_name => "Eve", :last_name => "Smith")
     p.save
     p.should be_valid
