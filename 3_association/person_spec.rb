@@ -42,7 +42,7 @@ describe Person do
       lambda {
         p.phones.create!(:number => "415-555-1345")
       }.should change(Phone, :count).by(1)
-      p.phone.first.number.should == "415-555-1345"
+      p.phones.first.number.should == "415-555-1345"
     end
   end
 
