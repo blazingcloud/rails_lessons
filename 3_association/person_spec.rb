@@ -25,7 +25,7 @@ describe Person do
       p = Person.new(:first_name => "Eve", :last_name => "Smith")
       lambda {
         p.addresses.create!(:street1 => "10 Green St.", :city => "San Francisco", :state => "CA")  
-      } should change(Address, :count).by(1)
+      }.should change(Address, :count).by(1)
       p.addresses.first.city.should == "San Francisco"
     end
   end
@@ -41,7 +41,7 @@ describe Person do
       p = Person.new(:first_name => "Eve", :last_name => "Smith")
       lambda {
         p.phones.create!(:number => "415-555-1345")
-      } should change(Phone, :count).by(1)
+      }.should change(Phone, :count).by(1)
       p.phone.first.number.should == "415-555-1345"
     end
   end
