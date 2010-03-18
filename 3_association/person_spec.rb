@@ -33,7 +33,7 @@ describe Person do
   describe "phones" do
     it 'should have many phone numbers ' do
       p = Person.new(:first_name => "Eve", :last_name => "Smith")
-      p.should respond_to :phone_number
+      p.should respond_to :phones
     end
 
     it 'should allow creation of a phone number' do
