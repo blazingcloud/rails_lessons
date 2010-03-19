@@ -3,6 +3,7 @@ Features have already been written to start you on your way to building an app t
 The idea is that it is an app where people can make suggestions of topics they want to learn and then people can vote on them
 
     rails suggestorama
+    cd suggestorama
     ruby script/generate cucumber
     rm -rf features
     git clone http://github.com/ultrasaurus/workshop-features.git features
