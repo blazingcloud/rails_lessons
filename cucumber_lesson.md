@@ -5,10 +5,11 @@ The idea is that it is an app where people can make suggestions of topics they w
     rails suggestorama
     ruby script/generate cucumber
     rm -rf features
-    git clone http://github.com/ultrasaurus/workshop-features.git
+    git clone http://github.com/ultrasaurus/workshop-features.git features
     rm -rf features/.git
     cd config
     echo "default: --format pretty" > cucumber.yml
+    cd ..
     rake db:migrate
 
 Full step by step instructions are here:  http://wiki.devchix.com/index.php?title=Rails_Curriculum
