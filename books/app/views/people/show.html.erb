@@ -1,0 +1,15 @@
+<p>
+  <b>Name:</b>
+  <%=h @person.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @person.address %>
+</p>
+
+
+
+<%= link_to 'Book Page', bookpage_path %> |
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

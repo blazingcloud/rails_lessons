@@ -1,0 +1,20 @@
+<h1>Add Book</h1>
+
+<% form_for(@book) do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field(:person_id) %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :page_count %><br />
+    <%= f.text_field :page_count %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', people_path %>

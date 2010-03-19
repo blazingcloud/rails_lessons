@@ -1,0 +1,19 @@
+<h1>Listing people</h1>
+
+<ul>
+<% @people.each do |person| %>
+  <li><%= h("#{person.name}, #{person.address}")%>
+    <%= link_to 'Edit', edit_person_path(person) %>
+    <%= link_to 'Destroy', person, :confirm => 'Are you sure?', :method => :delete %>
+    <%= link_to 'Add Book', new_book_path(:person_id => person.id) %>
+    <ul>
+
+      <%= render :partial => "books/book", :collection => person.books %>
+
+    </ul>
+  </li>
+ <% end %>
+</ul>
+<br />
+
+<%= link_to 'New person', new_person_path %>

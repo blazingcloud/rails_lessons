@@ -1,0 +1,23 @@
+<h1>Editing person</h1>
+
+<% form_for(@person) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= render :partial => "books/book", :locals => {:book => @person.book[0]} %>
+
+
+<%= link_to 'Show', @person %> |
+<%= link_to 'Back', people_path %>
