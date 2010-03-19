@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Book do
   it 'should have title and year published' do
     b = Book.new(:title => "Oliver Twist", :year => "1838")
-    b.title.should == "Eve"
+    b.title.should == "Oliver Twist"
     b.year.should == "1838"
   end
 
