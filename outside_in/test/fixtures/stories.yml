@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+headline_story:
+  title: Headline News
+  content: MyText
+
+two:
+  title: Whatever
+  content: MyText
