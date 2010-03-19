@@ -22,9 +22,9 @@ describe Person do
 
     it 'should allow creation of an address' do
       pending
-      p = Person.new(:first_name => "Eve", :last_name => "Smith")
+      p = Person.create!(:first_name => "Eve", :last_name => "Smith")
       lambda {
-        p.addresses.create!(:street1 => "10 Green St.", :city => "San Francisco", :state => "CA")  
+        p.addresses.create!(:street => "10 Green St.", :city => "San Francisco", :state => "CA")  
       }.should change(Address, :count).by(1)
       p.addresses.first.city.should == "San Francisco"
     end
@@ -38,7 +38,7 @@ describe Person do
 
     it 'should allow creation of a phone number' do
       pending
-      p = Person.new(:first_name => "Eve", :last_name => "Smith")
+      p = Person.create!(:first_name => "Eve", :last_name => "Smith")
       lambda {
         p.phones.create!(:number => "415-555-1345")
       }.should change(Phone, :count).by(1)
