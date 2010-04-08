@@ -1,0 +1,2 @@
+module HobbyOriginsHelper
+end

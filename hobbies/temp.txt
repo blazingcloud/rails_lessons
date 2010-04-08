@@ -1,0 +1,123 @@
+rails hobbies
+cd hobbies/
+script/generate rspec_scaffold people name:string
+script/destroy rspec_scaffold people
+script/generate rspec_scaffold person name:string
+script/generate rspec
+rake db:migrate
+rake spec
+script/generate resource hobby name:string description:string
+script/generate resource hobby_origin person_id:integer hobby_id:integer story:text started_on:date
+rake db:migrate
+
+spec/models/person_spec.rb
+  it "should have many hobby_origins" do
+    person = Person.create!(@valid_attributes)
+    person.hobby_origins.should be_empty
+  end
+
+rake spec
+
+  563  git init
+  564  git add .
+  565  git commit -m "people scaffold, hobbies and hobby_origins resources"
+
+in app/models/person.rb
+class Person < ActiveRecord::Base
+  has_many :hobby_origins
+end
+
+rake spec
+pass!
+
+spec/models/person_spec.rb
+  it "should have many hobbies" do
+    person = Person.create!(@valid_attributes)
+    person.hobbies.should be_empty    
+  end
+
+rake spec
+1 failure
+
+in app/models/person.rb
+class Person < ActiveRecord::Base
+  has_many :hobby_origins
+  has_many :hobbies, :through => :hobby_origins
+end
+
+rake spec
+fail!
+ActiveRecord::HasManyThroughSourceAssociationNotFoundError in 'Person should have many hobbies'
+Could not find the source association(s) :hobby or :hobbies in model HobbyOrigin.  Try 'has_many :hobbies, :through => :hobby_origins, :source => <name>'.  Is it one of ?
+
+create spec/models/hobby_origin_spec.rb
+require 'spec_helper'
+
+describe HobbyOrigin do
+  before(:each) do
+    @valid_attributes = {
+      :story => "once upon a time.."
+    }
+  end
+
+  it "should create a new instance given valid attributes" do
+    HobbyOrigin.create!(@valid_attributes)
+  end
+
+  it "should have one hobby" do
+    h = HobbyOrigin.new(@valid_attributes)
+    h.hobby.should be_nil
+  end
+end
+
+rake spec
+2 failures, as expected
+
+class HobbyOrigin < ActiveRecord::Base
+  belongs_to :hobby
+end
+
+in app/views/people/show.html.erb, display list of hobbies
+<ul>
+<% @person.hobbies.each do |hobby| %>
+  <li><%= h(hobby.name) %></li>
+<% end %>
+</ul>
+
+in routes.rb:
+  map.resources :people, :has_many => :hobby_origins
+
+in app/controllers/hobby_origins_controller.rb
+class HobbyOriginsController < ApplicationController
+  def show
+    @person = Person.find(params[:person_id])
+    @origin = @person.hobby_origins.find_by_hobby_id(params[:id])
+  end
+end
+
+
+created show template
+<h1><%=h @person.name%> has a neat hobby</h1>
+
+<p>
+<%=h @origin.story%>
+</p>
+
+look up the named route (by calling rake routes on the command line): person_hobby_origin
+and add links to the person show page (app/views/people/show.html.erb)
+<p>
+  <b>Name:</b>
+  <%=h @person.name %>
+</p>
+
+<ul>
+<% @person.hobbies.each do |hobby| %>
+  <li><%= link_to h(hobby.name), person_hobby_origin_path(@person.id, hobby.id) %></li>
+<% end %>
+</ul>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>
+
+
+

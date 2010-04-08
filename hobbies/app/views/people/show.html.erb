@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @person.name %>
+</p>
+
+<ul>
+<% @person.hobbies.each do |hobby| %>
+  <li><%= link_to h(hobby.name), person_hobby_origin_path(@person.id, hobby.id) %></li>
+<% end %>
+</ul>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

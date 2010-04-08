@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  person_id: 1
+  hobby_id: 1
+  story: MyText
+  started_on: 2010-04-07
+
+two:
+  person_id: 1
+  hobby_id: 1
+  story: MyText
+  started_on: 2010-04-07
