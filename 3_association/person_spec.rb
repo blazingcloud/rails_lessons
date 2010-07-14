@@ -17,7 +17,7 @@ describe Person do
     it 'should have no addresses in a new record' do
       pending
       p = Person.new(:first_name => "Eve", :last_name => "Smith")
-      p.addresses should be_empty
+      p.addresses.should be_empty
     end
 
     it 'should allow creation of an address' do
