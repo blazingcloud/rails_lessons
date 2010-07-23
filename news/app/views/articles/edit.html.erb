@@ -1,0 +1,21 @@
+
+<% form_for(@article) do |f| %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </p>
+  <p>
+    <%= f.label :published_on %>
+    <%= f.date_select :published_on %> 
+  </p>
+  <p> <%= f.submit "#{@article.new_record? ? 'Create' : 'Update'}" %> </p>
+  
+<% end %>

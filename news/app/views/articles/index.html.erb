@@ -1,0 +1,7 @@
+<h1>Here are all my Favorite Articles</h1>
+
+<ul>
+<% @articles.each do |article| %>
+  <li><%= link_to article.title, edit_article_path(article) %></li>
+<% end %>
+</ul>

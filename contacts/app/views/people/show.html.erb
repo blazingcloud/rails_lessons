@@ -1,0 +1,40 @@
+<p>
+  <b>First name:</b>
+  <%=h @person.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%=h @person.last_name %>
+</p>
+
+<h2>Addresses</h2>  
+
+<p>This person has <%= pluralize(@person.addresses.count, "address") %></p>
+<ul>
+<% @person.addresses.each do |address| %>
+
+<li> <%= "#{address.house_number} #{address.street}, #{address.city}, #{address.state}"  %> </li>
+
+<% end %>
+  
+<p>Add Address:</p>
+<% form_for(:address, @person.addresses.build, :url => {:controller=>"addresses", :action=>"create", :person_id => @person}) do |f| %>
+ <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </p>
+<p>
+  <%= f.submit 'Create' %>
+</p>
+<% end %>
+
+
+  
+</ul>
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>
