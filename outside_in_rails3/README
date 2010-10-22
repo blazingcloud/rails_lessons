@@ -1,0 +1,36 @@
+rails new outside_in_example -m http://jruby.org
+cd outside_in_example/
+vi Gemfile
+    group :development, :test do
+      gem 'rspec-rails', '>=2.0.1'
+      gem 'cucumber-rails'
+      gem 'capybara'
+    end
+
+bundle
+rails generate rspec:install
+rails generate cucumber:install --capybara
+rake db:migrate
+export CUCUMBER_FORMAT=pretty   # or config/cucumber.yml
+rake cucumber
+# fails
+
+rails generate rspec:model story
+vi spec/models/story_spec.rb 
+# test-drive development of the model
+# we'll take a short cut and implement with scaffold
+rails generate scaffold story title:string content:text
+rake db:migrate
+rake cucumber # still fails, need to make homepage refer to story list
+
+vi config/routes.rb
+  root :to => "stories#index"
+rake cucumber # still fails
+  
+rm public/index.html
+rake cucumber # first scenario passes!
+
+
+
+
+
