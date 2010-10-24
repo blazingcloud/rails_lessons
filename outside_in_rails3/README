@@ -30,6 +30,12 @@ rake cucumber # still fails
 rm public/index.html
 rake cucumber # first scenario passes!
 
+to address the next failure, we'll edit the controller
+modify the create method:
+        format.html { redirect_to(@story, :notice => 'Story was successfully created.') }
+change @story to root_path
+
+Now we've fixed one error, but the scenario stil fails.  We need to edit the index page so the description is not listed there.
 
 
 

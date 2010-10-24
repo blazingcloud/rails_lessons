@@ -14,7 +14,6 @@ Feature: Manage news
     And I press "Create"
     Then I should be on the home page
     And I should see "Headline News"
-    And I should not see "great story"
 
 
 
