@@ -1,6 +1,8 @@
 DailyNews::Application.routes.draw do
-  match "articles" => "articles#index"
-  match "echo/:text", :to => "echo#index", :as => "echoing"
+  resources :people
+  resources :articles
+  match "echo/:text" => "echo#index"
+  match "echo" => "echo#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

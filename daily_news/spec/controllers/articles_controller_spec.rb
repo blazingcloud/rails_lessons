@@ -37,7 +37,6 @@ describe ArticlesController do
 
   describe "GET new" do
     it "renders" do
-      pending
       get :new
       assigns[:article].should be_new_record
       response.should render_template('edit')
@@ -46,7 +45,6 @@ describe ArticlesController do
 
   describe "GET edit" do
     it "renders" do
-      pending
       get :edit, {:id => @article1.id}
       assigns[:article].should == @article1
       response.should render_template('edit')

@@ -104,7 +104,8 @@ describe PeopleController do
 
   describe "DELETE destroy" do
     before do
-      delete :destroy, {:id => @emmy}
+      Person.find_by_id(@emmy.id).should_not be_nil
+      delete :destroy, {:id => @emmy.id}
     end
     it "should destroy the record" do
       Person.find_by_id(@emmy.id).should be_nil
