@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "list courses" do
+describe "Listing courses" do
 
-  context "with 3 people" do
+  context "when three courses exist" do
     before do
       Course.create(:name => 'Creative Writing', :description => 'Learn to write fiction.')
       Course.create(:name => 'Ruby on Rails', :description => 'Build awesome web applications.')
@@ -11,14 +11,13 @@ describe "list courses" do
       visit courses_path # index
     end
 
-    it "displays list of course names and their descriptions" do
-      # page.save_and_open_page
+    it "should display a list of course names and their descriptions" do
       page.should have_content('Creative Writing')
       page.should have_content('Ruby on Rails')
       page.should have_content('American History')
     end
 
-    it "links to show page" do
+    it "should link course names to show pages" do
       click_link 'Creative Writing'
       page.should have_content('Learn to write fiction.')
     end

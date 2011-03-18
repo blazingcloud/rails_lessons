@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe "Mangaging assignments from a course page" do
-  describe "When going to a course page" do
+describe "Managing assignments from a course page" do
+  describe "When viewing a course" do
     attr_reader :course
     before do
       @course = Course.create!(:name => 'Creative Writing', :description => 'Learn to write fiction.')
@@ -32,7 +32,7 @@ describe "Mangaging assignments from a course page" do
       ]
     end
 
-    describe "when clicking on a link to create a new assignment" do
+    describe "and clicking on a link to create a new assignment" do
       before do
         click_link "Create a new assignment"
       end
@@ -41,7 +41,7 @@ describe "Mangaging assignments from a course page" do
         page.find('h1').text.should == "New assignment for Creative Writing"
       end
 
-      describe "and entering valid data" do
+      describe "and submitting the form with valid data" do
         before do
           @title = "In the mountains, you are beguiled by mysterious music" 
           fill_in "Description", :with => @title
@@ -62,7 +62,7 @@ describe "Mangaging assignments from a course page" do
       end
     end
 
-    describe "when clicking on an assignment" do
+    describe "and clicking on an assignment" do
       before do
         click_link "2010-01-15: a conversation with your mother"
       end
@@ -71,7 +71,7 @@ describe "Mangaging assignments from a course page" do
         page.should have_content("Editing assignment") 
       end
 
-      describe "and entering valid data on the edit assignment page" do
+      describe "and submitting valid changes for the assignment" do
         before do
           @assignment_id = current_path.match(/(\d+)\/edit/)[1]
           @count = Assignment.count
