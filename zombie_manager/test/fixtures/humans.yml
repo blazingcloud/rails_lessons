@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  blood_type: MyString
+  height: MyString
+  weight: MyString
+
+two:
+  blood_type: MyString
+  height: MyString
+  weight: MyString

@@ -1,0 +1,35 @@
+<%= form_for @human, :html => {:multipart => true} do |f| %>
+  <% if @human.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@human.errors.count, "error") %> prohibited this human from being saved:</h2>
+
+      <ul>
+      <% @human.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :blood_type %><br />
+    <%= f.text_field :blood_type %>
+  </div>
+  <div class="field">
+    <%= f.label :height %><br />
+    <%= f.text_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br />
+    <%= f.text_field :weight %>
+  </div>
+  <div>
+    <%= f.label :picture %></br>
+    <%= image_tag(@human.picture_url) if @human.picture? %>
+    <%= f.file_field :picture %>
+    <%= f.hidden_field :picture_cache %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

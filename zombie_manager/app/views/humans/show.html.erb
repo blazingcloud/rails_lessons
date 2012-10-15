@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Blood type:</b>
+  <%= @human.blood_type %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @human.height %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%= @human.weight %>
+</p>
+
+
+<%= link_to 'Edit', edit_human_path(@human) %> |
+<%= link_to 'Back', humans_path %>

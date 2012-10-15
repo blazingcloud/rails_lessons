@@ -1,0 +1,29 @@
+<h1>Listing humans</h1>
+
+<table>
+  <tr>
+    <th>Pictre</th>
+    <th>Blood type</th>
+    <th>Height</th>
+    <th>Weight</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @humans.each do |human| %>
+  <tr>
+    <td><%= image_tag(human.picture_url) if human.picture? %></td>
+    <td><%= human.blood_type %></td>
+    <td><%= human.height %></td>
+    <td><%= human.weight %></td>
+    <td><%= link_to 'Show', human %></td>
+    <td><%= link_to 'Edit', edit_human_path(human) %></td>
+    <td><%= link_to 'Destroy', human, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Human', new_human_path %>
