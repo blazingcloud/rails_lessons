@@ -1,0 +1,13 @@
+{{# topics? }}
+<ol>
+  {{# topics }}
+  	<li>
+  		<h2><a href="{{ url }}">{{ title }}</a></h2>
+  		{{ body }}
+  		<p><a href="{{ url }}"> Continue Reading </a></p>
+  	</li>
+  {{/ topics }}
+</ol>
+{{/ topics? }}
+
+{{ new_topic_link }}	

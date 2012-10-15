@@ -1,0 +1,18 @@
+rails new topics_mustache
+add this to Gemfile:  
+    gem 'mustache-rails', :require => 'mustache/railtie'
+run bundle
+
+rails g model topic body title
+rake db:migrate
+rails g controller topics
+add this line to the routes.rb file: resources :topics
+
+add a templates directory under app
+move views/layouts/application.html.erb to views/layouts/application.rb 
+update views/layouts/application.rb to be a mustache action view
+add the application.html.mustache template to app/templates/layouts
+
+add the index method to topics_controller.rb
+add the index.rb presenter to app/views/topics/
+add the index.html.mustache template to app/templates/topics/
