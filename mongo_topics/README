@@ -1,0 +1,14 @@
+rails new topics_mongo --skip-active-record
+
+Gemfile:
+gem 'mongoid'
+gem 'bson_ext'
+
+rails g mongoid:config
+
+config/application.rb:
+config.generators do |g|
+	g.orm :mongoid
+end
+
+rails g model topic title body
