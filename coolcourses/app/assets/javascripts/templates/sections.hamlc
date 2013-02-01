@@ -1,0 +1,8 @@
+#sections
+  %h2 Course Sections
+  %ul
+    - for item in @sections
+      %li
+        .item
+          = item.name
+          = item.location
